@@ -7,10 +7,10 @@
 
 <p align="center">
 
-[![Release](https://www.pinnumber.rr.nu/github/release/yeongpin/cursor-free-vip.svg)](https://github.com/yeongpin/cursor-free-vip/releases/latest)
+[![Release](https://img.shields.io/endpoint?url=https://www.pinnumber.rr.nu/badges/release/yeongpin/cursor-free-vip)](https://github.com/yeongpin/cursor-free-vip/releases/latest)
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
-[![Stars](https://www.pinnumber.rr.nu/github/stars/yeongpin/cursor-free-vip/stars.svg)](https://github.com/yeongpin/cursor-free-vip/stargazers)
-[![Downloads](https://www.pinnumber.rr.nu/github/downloads/yeongpin/cursor-free-vip/total.svg)](https://github.com/yeongpin/cursor-free-vip/releases/latest)
+[![Stars](https://img.shields.io/endpoint?url=https://www.pinnumber.rr.nu/badges/stars/yeongpin/cursor-free-vip)](https://github.com/yeongpin/cursor-free-vip/stargazers)
+[![Downloads](https://img.shields.io/endpoint?url=https://www.pinnumber.rr.nu/badges/downloads/yeongpin/cursor-free-vip/total)](https://github.com/yeongpin/cursor-free-vip/releases/latest)
 <a href="https://buymeacoffee.com/yeongpin" target="_blank"><img alt="Buy Me a Coffee" src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Support%20Me-FFDA33"></a>
 
 </p>
@@ -24,26 +24,24 @@
 
 <h4>Support Latest 0.48.x Version | 支持最新 0.48.x 版本</h4>
 
-This tool registers accounts with custom emails, support Google and GitHub account registrations, temporary GitHub account registration, kills all Cursor's running processes, resets and wipes Cursor data and hardware info.
+This tool is for educational purposes, currently the repo does not violate any laws. Please support the original project.
+This tool will not generate any fake email accounts and OAuth access.
 
 Supports Windows, macOS and Linux.
 
 For optimal performance, run with privileges and always stay up to date.
 
-Always clean your browser's cache and cookies. If possible, use a VPN to create new accounts.
+這是一款用於學習和研究的工具，目前 repo 沒有違反任何法律。請支持原作者。
+這款工具不會生成任何假的電子郵件帳戶和 OAuth 訪問。
 
+支持 Windows、macOS 和 Linux。
 
-這是一個自動化工具，自動註冊，支持 Windows macOS 和 Linux 系統，完成 Auth 驗證，重置 Cursor 的配置。
+對於最佳性能，請以管理員身份運行並始終保持最新。
+
 
 <p align="center">
-  <img src="./images/pro_2025-04-05_18-47-56.png" alt="new" width="800" style="border-radius: 6px;"/><br>
+  <img src="./images/product_2025-04-16_10-40-21.png" alt="new" width="800" style="border-radius: 6px;"/><br>
 </p>
-
-##### If you don't have browser, you can download it from 
-[Google Chrome](https://www.google.com/intl/en_pk/chrome/) or [Opera](https://www.opera.com/download) or [Edge](https://www.microsoft.com/en-us/edge) or [Firefox](https://www.mozilla.org/en-US/firefox/new/) or [Brave](https://www.brave.com/download/)
-
-##### 如果沒有瀏覽器，可以從
-[Google Chrome](https://www.google.com/intl/en_pk/chrome/) 或 [Opera](https://www.opera.com/download) 或 [Edge](https://www.microsoft.com/en-us/edge) 或 [Firefox](https://www.mozilla.org/en-US/firefox/new/) 或 [Brave](https://www.brave.com/download/) 下載
 
 </div>
 
@@ -53,29 +51,19 @@ Always clean your browser's cache and cookies. If possible, use a VPN to create 
 
 ## ✨ Features | 功能特點
 
-* 🌟 Google OAuth Authentication with Lifetime Access<br>使用 Google OAuth 認證（終身訪問）<br>
-
-* ⭐ GitHub OAuth Authentication with Lifetime Access<br>使用 GitHub OAuth 認證（終身訪問）<br>
-
-* Automatically register Cursor membership<br>自動註冊 Cursor 會員<br>
-
 * Support Windows macOS and Linux systems<br>支持 Windows、macOS 和 Linux 系統<br>
 
-* Complete Auth verification<br>完成 Auth 驗證<br>
-
 * Reset Cursor's configuration<br>重置 Cursor 的配置<br>
-
-* Delete Cursor Google Account<br>删除 Cursor Google 账号<br>
 
 * Multi-language support (English, 简体中文, 繁體中文, Vietnamese)<br>多語言支持（英文、简体中文、繁體中文、越南語）<br>
 
 ## 💻 System Support | 系統支持
 
-| Windows |  x64  | ✅ | macOS |     Intel     | ✅ |
-|:-------:|:-----:|:-:|:-----:|:-------------:|:-:|
-| Windows |  x86  | ✅ | macOS | Apple Silicon | ✅ |
-|  Linux  |  x64  | ✅ | Linux |      x86      | ✅ |
-|  Linux  | ARM64 | ✅ | Linux |     ARM64     | ✅ |
+| Operating System | Architecture      | Supported |
+|------------------|-------------------|-----------|
+| Windows          | x64, x86          | ✅         |
+| macOS            | Intel, Apple Silicon | ✅      |
+| Linux            | x64, x86, ARM64   | ✅         |
 
 ## 👀 How to use | 如何使用
 

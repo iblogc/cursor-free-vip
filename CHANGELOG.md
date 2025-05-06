@@ -1,6 +1,90 @@
 # Change Log
 
-## v1.9.03
+## v1.11.03
+1. Update: TempMailPlus Cursor Email Detection Logic | 更新 TempMailPlus Cursor 邮件识别逻辑
+2. Fix: Windows User Directory Path | 修正 windows 环境下用户目录的获取方式
+3. Fix: Some Issues | 修復一些問題
+
+## v1.11.02
+1. Fill: Missing Translations（ar, zh-cn, zh-tw, vi, nl, de, fr, pt, ru, tr, bg, es, ja, it） | 填補缺失的翻譯
+2. Add: Japanese and Italian language support
+3. Refactor: Account Generation with Faker and Update requirements.txt
+4. Add: script to auto-translate missing keys in translation files | 增加 fill_missing_translations.py 自動翻譯缺失的翻譯鍵
+5. Add: TempMailPlus Support, support temp email verification | 新增 TempMailPlus 配置，支持临时邮箱验证功能
+6. Fix: Chrome user data directory permission problem on mac | 修復 Chrome 用戶數據目錄權限問題 on mac
+7. Fix: Some Issues | 修復一些問題
+
+## v1.11.01
+0. Must Update to this version to get full experience | 必須更新到此版本以獲取完整體驗
+1. Restore: Some Main Code | 恢復一些主程式碼
+2. Add: Arabic language | 增加阿拉伯語
+3. Add: Language configuration saved setting | 增加語言配置保存設定
+4. Add: Restore Machine ID from Backup | 增加從備份恢復機器ID
+5. Add: Owned Website Check Version | 增加擁有網站檢查版本
+6. Fix: use cursor_path from config_file | 修復使用 cursor_path 從 config_file
+7. Fix: macOS 'bypass_version.py' get product_json_path from config_file | 修復 macOS 'bypass_version.py' 從 config_file 獲取 product_json_path
+8. Fix: Some Issues | 修復一些問題
+
+## v1.10.05
+1. Remove block_domain.txt | 移除 block_domain.txt
+2. Original Code In Github , If u afraid of virus, please clone the code and run locally | 原始碼在 Github 上，如果怕病毒，請複製原始碼並在本機運行
+3. All Action using github workflow , not build myself , so i cant place virus in the file | 所有 Action 使用 github workflow ，不是我自己 build 的，所以我不會在文件中放置病毒
+4. Fix: Some Issues | 修復一些問題
+
+
+## v1.10.04
+1. Hotfix: Reset Process Error: cannot access local variable 'main_path' where it is not associated with a value on windows & macos | 修復在 Windows 和 macOS 上無法訪問局部變量 'main_path' 的問題
+2. Fix: Some Issues | 修復一些問題
+
+## v1.10.03
+1. Add: Manual Registration | 增加手動註冊
+2. Only support your own Email | 只支持自己的Email 請勿使用Temp Email 註冊 註冊假賬號.
+3. Fix: macOS 'bypass_version.py' get product_json_path from config_file | 修復 macOS 'bypass_version.py' 從 config_file 獲取 product_json_path
+4. Fix: use cursor_path from config_file | 修復使用 cursor_path 從 config_file
+5. Fix: Some Issues | 修復一些問題
+
+## v1.10.02
+1. Remove: Remove All Auto generating fake Google email accounts and OAuth access | 移除所有自動生成假 Google 電子郵件帳戶和 OAuth 訪問
+2. Follow GitHub Terms of Service | 遵守 GitHub Terms of Service
+3. Follow Cursor Terms of Service | 遵守 Cursor Terms of Service
+4. All are for educational purposes, currently the repo does not violate any laws | 全都是教育用途，目前 repo 沒有違反任何法律
+5. This project adopts CC BY-NC-ND 4.0 , do not use for commercial purposes | 本專案採用 CC BY-NC-ND 4.0，拒絕任何商業用途
+6. Use & Cherish | 切用且珍惜
+7. Same as v1.10.01 | 與 v1.10.01 相同 
+8. Fix: reset machine ID no module name 'new_signup' | 修復機器 ID 重置 no module name 'new_signup'
+9. Fix: Some Issues | 修復一些問題
+
+## v1.10.01
+1. Remove: Remove All Auto generating fake Google email accounts and OAuth access | 移除所有自動生成假 Google 電子郵件帳戶和 OAuth 訪問
+2. Follow GitHub Terms of Service | 遵守 GitHub Terms of Service
+3. Follow Cursor Terms of Service | 遵守 Cursor Terms of Service
+4. All are for educational purposes, currently the repo does not violate any laws | 全都是教育用途，目前 repo 沒有違反任何法律
+5. This project adopts CC BY-NC-ND 4.0 , do not use for commercial purposes | 本專案採用 CC BY-NC-ND 4.0，拒絕任何商業用途
+6. Use & Cherish | 切用且珍惜
+7. Fix: Some Issues | 修復一些問題
+
+## v1.9.05
+1. Refactor: Using match-case to refactor language mapping and menu selection logic, making the code clearer and more maintainable. | 使用 match-case 重构语言映射和菜单选择逻辑，使代码更清晰、可维护性更高。
+2. Ci: Update the Python version in the ARM64 Docker build container to 3.10, making it more compatible and easier to migrate in the future. | 更新 ARM64 Docker 构建容器中的 Python 版本至 3.10，兼容性更强，方便未来迁移。
+3. Fix: f-string backslash expression errors in multiple files | 修復多個文件中的 f-string 反斜杠表達式錯誤
+4. Sync AUR new version 1.9.04 | 同步 AUR 新版本 1.9.04
+5. Fix: missing license install on pkgbuild @michaeldavis246611119 mention here | 修復 pkgbuild 中缺少授權安裝 @michaeldavis246611119 提到這裡
+6. Fix: readme table | 修復 readme 表格
+7. Fix: google-chrome package name problem, add "google-chrome-stable" [Bug]: Chrome error | Arch | gnome | AUR chrome #242 [Discussion]: how to use the new feature, Register with Google Account #249 [Discussion]: Having issues using the script in Ubuntu #487 [Bug]: Can open chromium bin in linux #616 | 修復 google-chrome 包名稱問題，添加 "google-chrome-stable" [Bug]: Chrome error | Arch | gnome | AUR chrome #242 [Discussion]: how to use the new feature, Register with Google Account #249 [Discussion]: Having issues using the script in Ubuntu #487 [Bug]: Can open chromium bin in linux #616
+8. Fix: exception error log | 修復異常錯誤日誌
+9. Fix: github oauth error [Bug]: #564 | 修復 github oauth 錯誤 [Bug]: #564
+10. Fix: ChromiumOptions.arguments type error: list object has no attribute 'get' | 修復 ChromiumOptions.arguments 類型錯誤：list 對象沒有屬性 'get'
+11. Fix: Some Issues | 修復一些問題
+
+## v1.9.04
+1. Add: Opera GX Support | 添加 Opera GX 支持
+2. Same as v1.9.03 | 與 v1.9.03 相同
+3. Hotfix: Some Issues | 修復一些問題
+4. Add: Bypass Cursor JWT EXP Problem | 添加繞過 Cursor JWT EXP 問題
+5. Fix: Cursor editor redirects to logout page and logout automatically | 修復 Cursor 編輯器重定向到登出頁面並自動登出
+6. Fix: Some Issues | 修復一些問題
+
+## v1.9.03[Skip & Merge to v1.9.04]
 1. Hotfix: Some Issues | 修復一些問題
 2. Add: Bypass Cursor JWT EXP Problem | 添加繞過 Cursor JWT EXP 問題
 3. Fix: Cursor editor redirects to logout page and logout automatically | 修復 Cursor 編輯器重定向到登出頁面並自動登出

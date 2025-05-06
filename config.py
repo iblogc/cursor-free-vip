@@ -60,18 +60,17 @@ def setup_config(translator=None):
             'Browser': {
                 'default_browser': 'chrome',
                 'chrome_path': get_default_browser_path('chrome'),
-                'edge_path': get_default_browser_path('edge'),
-                'firefox_path': get_default_browser_path('firefox'),
-                'brave_path': get_default_browser_path('brave'),
                 'chrome_driver_path': get_default_driver_path('chrome'),
+                'edge_path': get_default_browser_path('edge'),
                 'edge_driver_path': get_default_driver_path('edge'),
+                'firefox_path': get_default_browser_path('firefox'),
                 'firefox_driver_path': get_default_driver_path('firefox'),
+                'brave_path': get_default_browser_path('brave'),
                 'brave_driver_path': get_default_driver_path('brave'),
                 'opera_path': get_default_browser_path('opera'),
-                'opera_driver_path': get_default_driver_path('opera')
-            },
-            'Chrome': {
-                'chromepath': get_default_browser_path('chrome')
+                'opera_driver_path': get_default_driver_path('opera'),
+                'operagx_path': get_default_browser_path('operagx'),
+                'operagx_driver_path': get_default_driver_path('chrome')  # Opera GX 使用 Chrome 驱动
             },
             'Turnstile': {
                 'handle_turnstile_time': '2',
@@ -106,6 +105,12 @@ def setup_config(translator=None):
             'Token': {
                 'refresh_server': 'https://token.cursorpro.com.cn',
                 'enable_refresh': True
+            },
+            'Language': {
+                'current_language': '',  # Set by local system detection if empty
+                'fallback_language': 'en',
+                'auto_update_languages': 'True',
+                'language_cache_dir': os.path.join(config_dir, "language_cache")
             }
         }
 
@@ -244,6 +249,13 @@ def setup_config(translator=None):
                 'product_json_path': os.path.join(cursor_dir, "resources/app/product.json") if cursor_dir else ""
             }
 
+        # Add tempmail_plus configuration
+        default_config['TempMailPlus'] = {
+            'enabled': 'false',
+            'email': '',
+            'epin': ''
+        }
+
         # Read existing configuration and merge
         if os.path.exists(config_file):
             config.read(config_file, encoding='utf-8')
@@ -365,4 +377,4 @@ def get_config(translator=None):
     global _config_cache
     if _config_cache is None:
         _config_cache = setup_config(translator)
-    return _config_cache 
+    return _config_cache

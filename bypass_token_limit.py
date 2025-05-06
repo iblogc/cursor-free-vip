@@ -5,7 +5,7 @@ import tempfile
 import glob
 from colorama import Fore, Style, init
 import configparser
-from new_signup import get_user_documents_path
+import sys
 from config import get_config
 from datetime import datetime
 
@@ -22,6 +22,27 @@ EMOJI = {
     "RESET": "🔄",
     "WARNING": "⚠️",
 }
+
+def get_user_documents_path():
+     """Get user Documents folder path"""
+     if sys.platform == "win32":
+         try:
+             import winreg
+             with winreg.OpenKey(winreg.HKEY_CURRENT_USER, "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders") as key:
+                 documents_path, _ = winreg.QueryValueEx(key, "Personal")
+                 return documents_path
+         except Exception as e:
+             # fallback
+             return os.path.join(os.path.expanduser("~"), "Documents")
+     elif sys.platform == "darwin":
+         return os.path.join(os.path.expanduser("~"), "Documents")
+     else:  # Linux
+         # Get actual user's home directory
+         sudo_user = os.environ.get('SUDO_USER')
+         if sudo_user:
+             return os.path.join("/home", sudo_user, "Documents")
+         return os.path.join(os.path.expanduser("~"), "Documents")
+     
 
 def get_workbench_cursor_path(translator=None) -> str:
     """Get Cursor workbench.desktop.main.js path"""
@@ -69,10 +90,14 @@ def get_workbench_cursor_path(translator=None) -> str:
         base_path = config.get('WindowsPaths', 'cursor_path')
     elif system == "Darwin":
         base_path = paths_map[system]["base"]
+        if config.has_section('MacPaths') and config.has_option('MacPaths', 'cursor_path'):
+            base_path = config.get('MacPaths', 'cursor_path')
     else:  # Linux
         # For Linux, we've already checked all bases in the loop above
         # If we're here, it means none of the bases worked, so we'll use the first one
         base_path = paths_map[system]["bases"][0]
+        if config.has_section('LinuxPaths') and config.has_option('LinuxPaths', 'cursor_path'):
+            base_path = config.get('LinuxPaths', 'cursor_path')
 
     main_path = os.path.join(base_path, paths_map[system]["main"])
     
@@ -103,9 +128,11 @@ def modify_workbench_js(file_path: str, translator=None) -> bool:
                 # 通用按钮替换模式
                 r'B(k,D(Ln,{title:"Upgrade to Pro",size:"small",get codicon(){return A.rocket},get onClick(){return t.pay}}),null)': r'B(k,D(Ln,{title:"yeongpin GitHub",size:"small",get codicon(){return A.github},get onClick(){return function(){window.open("https://github.com/yeongpin/cursor-free-vip","_blank")}}}),null)',
                 
-                # Windows/Linux/Mac 通用按钮替换模式
-                r'M(x,I(as,{title:"Upgrade to Pro",size:"small",get codicon(){return $.rocket},get onClick(){return t.pay}}),null)': r'M(x,I(as,{title:"yeongpin GitHub",size:"small",get codicon(){return $.rocket},get onClick(){return function(){window.open("https://github.com/yeongpin/cursor-free-vip","_blank")}}}),null)',
+                # Windows/Linux
+                r'M(x,I(as,{title:"Upgrade to Pro",size:"small",get codicon(){return $.rocket},get onClick(){return t.pay}}),null)': r'M(x,I(as,{title:"yeongpin GitHub",size:"small",get codicon(){return $.github},get onClick(){return function(){window.open("https://github.com/yeongpin/cursor-free-vip","_blank")}}}),null)',
                 
+                # Mac 通用按钮替换模式
+                r'$(k,E(Ks,{title:"Upgrade to Pro",size:"small",get codicon(){return F.rocket},get onClick(){return t.pay}}),null)': r'$(k,E(Ks,{title:"yeongpin GitHub",size:"small",get codicon(){return F.rocket},get onClick(){return function(){window.open("https://github.com/yeongpin/cursor-free-vip","_blank")}}}),null)',
                 # Badge 替换
                 r'<div>Pro Trial': r'<div>Pro',
 

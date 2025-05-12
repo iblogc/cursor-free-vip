@@ -11,7 +11,6 @@ import tempfile
 from colorama import Fore, Style, init
 from typing import Tuple
 import configparser
-from new_signup import get_user_documents_path
 import traceback
 from config import get_config
 import glob
@@ -29,6 +28,26 @@ EMOJI = {
     "RESET": "🔄",
     "WARNING": "⚠️",
 }
+
+def get_user_documents_path():
+     """Get user Documents folder path"""
+     if sys.platform == "win32":
+         try:
+             import winreg
+             with winreg.OpenKey(winreg.HKEY_CURRENT_USER, "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders") as key:
+                 documents_path, _ = winreg.QueryValueEx(key, "Personal")
+                 return documents_path
+         except Exception as e:
+             return os.path.join(os.path.expanduser("~"), "Documents")
+     elif sys.platform == "darwin":
+         return os.path.join(os.path.expanduser("~"), "Documents")
+     else:  # Linux
+         # Get actual user's home directory
+         sudo_user = os.environ.get('SUDO_USER')
+         if sudo_user:
+             return os.path.join("/home", sudo_user, "Documents")
+         return os.path.join(os.path.expanduser("~"), "Documents")
+     
 
 def get_cursor_paths(translator=None) -> Tuple[str, str]:
     """ Get Cursor related paths"""
@@ -178,15 +197,22 @@ def get_cursor_machine_id_path(translator=None) -> str:
 def get_workbench_cursor_path(translator=None) -> str:
     """Get Cursor workbench.desktop.main.js path"""
     system = platform.system()
-    
+
+    # Read configuration
+    config_dir = os.path.join(get_user_documents_path(), ".cursor-free-vip")
+    config_file = os.path.join(config_dir, "config.ini")
+    config = configparser.ConfigParser()
+
+    if os.path.exists(config_file):
+        config.read(config_file)
+
     paths_map = {
         "Darwin": {  # macOS
             "base": "/Applications/Cursor.app/Contents/Resources/app",
             "main": "out/vs/workbench/workbench.desktop.main.js"
         },
         "Windows": {
-            "base": os.path.join(os.getenv("LOCALAPPDATA", ""), "Programs", "Cursor", "resources", "app"),
-            "main": "out/vs/workbench/workbench.desktop.main.js"
+            "main": "out\\vs\\workbench\\workbench.desktop.main.js"
         },
         "Linux": {
             "bases": ["/opt/Cursor/resources/app", "/usr/share/cursor/resources/app"],
@@ -210,7 +236,20 @@ def get_workbench_cursor_path(translator=None) -> str:
                 return main_path
         raise OSError(translator.get('reset.linux_path_not_found') if translator else "在 Linux 系统上未找到 Cursor 安装路径")
 
-    base_path = paths_map[system]["base"]
+    if system == "Windows":
+        base_path = config.get('WindowsPaths', 'cursor_path')
+    elif system == "Darwin":
+        base_path = paths_map[system]["base"]
+        if config.has_section('MacPaths') and config.has_option('MacPaths', 'cursor_path'):
+            base_path = config.get('MacPaths', 'cursor_path')
+    else:  # Linux
+        # For Linux, we've already checked all bases in the loop above
+        # If we're here, it means none of the bases worked, so we'll use the first one
+        base_path = paths_map[system]["bases"][0]
+        if config.has_section('LinuxPaths') and config.has_option('LinuxPaths', 'cursor_path'):
+            base_path = config.get('LinuxPaths', 'cursor_path')
+    
+    # Get the main path for non-Linux systems or if Linux path wasn't found in the loop
     main_path = os.path.join(base_path, paths_map[system]["main"])
     
     if not os.path.exists(main_path):
